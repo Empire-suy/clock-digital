@@ -25,16 +25,14 @@
     let digit = document.querySelector('#digit'),
         nums = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'night']
 
-    function setTimer() {
+    function setTimer(timestamp) {
       removedigit()
-      adddigit(getDig())
-      
-      setTimeout(() => {
-        setTimer()
-      }, 200)
+      adddigit(getDig(timestamp))
+
+      requestAnimationFrame(setTimer)
     }
 
-    function getDig() {
+    function getDig(timestamp) {
       return nums[new Date().getSeconds() % 10]
     }
 

@@ -28,9 +28,7 @@
       removedigit()
       adddigit(getDig())
       
-      setTimeout(() => {
-        setTimer()
-      }, 200)
+      requestAnimationFrame(setTimer)
     }
 
     function getDig() {
