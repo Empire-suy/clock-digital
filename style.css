@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+}
+
+.digit {
+  position: relative;
+  width: 30px;
+  height: 60px;
+
+  /* 通过缩放进行大小的调整 */
+  /* transform: scale(0.19); */
+}
+
+.digit-item {
+  position: absolute;
+  transition: all 0.1s;
+}
+
+/* 伪类公共样式 */
+.com-trangle:before,
+.com-trangle:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border: 3px solid transparent;
+  content: "";
+}
+
+
+/* 水平线 */
+.digit_item-horizontal {
+  left: 50%;
+  width: calc(100% - 15px);
+  height: 6px;
+  margin: auto;
+  background-color: #333;
+  transform: translateX(-50%);
+}
+
+.digit_item-horizontal:before {
+  left: -6px;
+}
+
+.digit_item-horizontal:after {
+  right: -6px;
+}
+
+
+/* 竖线 */
+.digit_item-vertical {
+  height: calc(50% - 13px);
+  width: 6px;
+  background-color: #333;
+}
+
+.digit_item-vertical:before {
+  top: -6px;
+}
+
+.digit_item-vertical:after {
+  bottom: -6px;
+}
+
+
+/* 显示三角 */
+.trangle-bl-before:before,
+.trangle-bl-after:after {
+  border-left-color: #333;
+  border-bottom-color: #333;
+}
+
+.trangle-br-before:before {
+  border-right-color: #333;
+  border-bottom-color: #333;
+}
+
+.trangle-tl-after:after {
+  border-left-color: #333;
+  border-top-color: #333;
+}
+
+.trangle-tr-before:before,
+.trangle-tr-after:after {
+  border-right-color: #333;
+  border-top-color: #333;
+}
+
+.trangle-left-before:before {
+  border-right-color: #333;
+}
+
+.trangle-right-after:after {
+  border-left-color: #333;
+}
+
+
+
+/* 数字位置 */
+.d-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.d-2 {
+  right: 0;
+  top: 75%;
+  transform: translateY(-53%);
+}
+
+.d-3 {
+  bottom: 0;
+}
+
+.d-4 {
+  left: 0;
+  top: 75%;
+  transform: translateY(-53%);
+}
+
+.d-5 {
+  left: 0;
+  top: 7px;
+}
+
+.d-6 {
+  top: 0;
+}
+
+.d-7 {
+  right: 0;
+  top: 7px;
+}
+
+
+
+/* 数字 */
+.zero .d-1,
+.one .digit-item:not(.d-2, .d-7),
+.two .digit-item:not(.d-1, .d-3, .d-4, .d-6, .d-7),
+.three .digit-item:not(.d-1, .d-2, .d-3, .d-6, .d-7),
+.four .digit-item:not(.d-1, .d-2, .d-5, .d-7),
+.five .digit-item:not(.d-1, .d-2, .d-3, .d-5, .d-6),
+.six .digit-item:not(.d-1, .d-2, .d-3, .d-4, .d-5, .d-6),
+.seven .digit-item:not(.d-2, .d-6, .d-7),
+.night .d-4 {
+  opacity: 0;
+}

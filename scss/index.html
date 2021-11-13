@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.min.css">
+</head>
+<body>
+  <div class="main">
+    <div id="digit" class="digit zero" style="transform: scale(0.5);">
+      <div class="digit_item-horizontal trangle-left-before trangle-right-after digit-item d-1"></div>
+      <div class="digit_item-vertical trangle-br-before trangle-tr-after digit-item d-2"></div>
+      <div class="digit_item-horizontal digit-item trangle-bl-after trangle-br-before d-3"></div>
+      <div class="digit_item-vertical trangle-bl-before trangle-tl-after digit-item d-4"></div>
+      <div class="digit_item-vertical trangle-bl-before trangle-tl-after digit-item d-5"></div>
+      <div class="digit_item-horizontal trangle-tr-before  trangle-tl-after digit-item d-6"></div>
+      <div class="digit_item-vertical trangle-br-before trangle-tr-after digit-item d-7"></div>
+    </div>
+  </div>
+
+  <script>
+    let digit = document.querySelector('#digit'),
+        nums = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'night']
+
+    function setTimer() {
+      removedigit()
+      adddigit(getDig())
+      
+      setTimeout(() => {
+        setTimer()
+      }, 200)
+    }
+
+    function getDig() {
+      return nums[new Date().getSeconds() % 10]
+    }
+
+    function adddigit(dig) {
+      digit.classList.add(dig)
+    }
+
+    
+    // 清除旧的数字
+    function removedigit() {
+      let classList = digit.classList,
+          existedClass = []
+
+      classList.forEach(item => {
+        if (nums.includes(item)) {
+          existedClass.push(item)
+        }
+      })
+
+      classList.remove(...existedClass)
+    }
+
+    setTimer()
+  </script>
+</body>
+</html>
